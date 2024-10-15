@@ -149,14 +149,55 @@ body {
 }
 
 /* Media query for smaller screens (phone size) */
+/* Media query for smaller screens (phone size, max width 500px) */
+/* Media query for smaller screens (phone size, max width 500px) */
 @media (max-width: 500px) {
     .container .profile-card {
         grid-template-columns: 1fr; /* Single column layout */
         grid-template-areas: 
         "intro"
         "pic"; /* Stack intro and pic vertically */
+        padding: 20px; /* Adjust padding to save space */
+        height: auto; /* Let the height adjust based on content */
+    }
+
+    .container .profile p {
+        width: 100%; /* Full width of container */
+        font-size: 14px; /* Smaller text size for better readability */
+        line-height: 1.4; /* Adjust line spacing */
+    }
+
+    .container .profile-card .status {
+        align-self: flex-start;
+        margin-top: 20px;
+        text-align: center; /* Center text and buttons */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+    }
+
+    .container .profile-card .status #pic {
+        width: 150px; /* Reduce size of profile picture */
+        height: 150px;
+        border-radius: 75px; /* Ensure it stays circular */
+        margin-bottom: 10px;
+    }
+
+    .container .profile-card .status #avail {
+        height: 30px; /* Maintain same height */
+        margin-bottom: 15px;
+    }
+
+    .container .profile-card .profile #hire,
+    .container .profile-card .profile #copy {
+        width: 100%; /* Full width buttons */
+        padding: 10px; /* Adjust button padding */
+        margin-top: 10px; /* Add spacing between buttons */
     }
 }
+
+
 
 .container .project-title{
     grid-area: project-title;
