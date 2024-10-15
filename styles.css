@@ -1,0 +1,216 @@
+body {
+    --background-color: #18181B;
+    --text-color: #A1A1AA;
+    --card-background-color: rgba(255, 255, 255, .015);
+    --card-border-color: rgba(255, 255, 255, 0.1);
+    --card-box-shadow-1: rgba(0, 0, 0, 0.05);
+    --card-box-shadow-1-y: 3px;
+    --card-box-shadow-1-blur: 6px;
+    --card-box-shadow-2: rgba(0, 0, 0, 0.1);
+    --card-box-shadow-2-y: 8px;
+    --card-box-shadow-2-blur: 15px;
+    --card-label-color: #FFFFFF;
+    --card-icon-color: #D4D4D8;
+    --card-icon-background-color: rgba(255, 255, 255, 0.08);
+    --card-icon-border-color: rgba(255, 255, 255, 0.12);
+    --card-shine-opacity: .1;
+    --card-shine-gradient: conic-gradient(from 205deg at 50% 50%, rgba(16, 185, 129, 0) 0deg, #10B981 25deg, rgba(52, 211, 153, 0.18) 295deg, rgba(16, 185, 129, 0) 360deg);
+    --card-line-color: #2A2B2C;
+    --card-tile-color: rgba(16, 185, 129, 0.05);
+
+    /* Modify hover colors for the orange effect */
+    --card-hover-border-color: rgba(255, 165, 0, 0.5); /* Orange border on hover */
+    --card-hover-box-shadow-1: rgba(255, 165, 0, 0.3); /* Orange light shadow */
+    --card-hover-box-shadow-1-y: 5px;
+    --card-hover-box-shadow-1-blur: 10px;
+    --card-hover-box-shadow-2: rgba(255, 140, 0, 0.5); /* Darker orange for second shadow */
+    --card-hover-box-shadow-2-y: 15px;
+    --card-hover-box-shadow-2-blur: 25px;
+    
+    --card-hover-icon-color: #FFA500; /* Orange icon color on hover */
+    --card-hover-icon-background-color: rgba(255, 165, 0, 0.1);
+    --card-hover-icon-border-color: rgba(255, 165, 0, 0.2);
+    --blur-opacity: .01;
+    
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: #fff;
+}
+
+/* Card styling */
+.card {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1),
+                0 var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2);
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 42px;
+    padding: 20px 40px;
+    width: 100%
+}
+
+.card:hover {
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 var(--card-hover-box-shadow-1-y) var(--card-hover-box-shadow-1-blur) var(--card-hover-box-shadow-1),
+                0 var(--card-hover-box-shadow-2-y) var(--card-hover-box-shadow-2-blur) var(--card-hover-box-shadow-2); 
+}
+.container {
+   display: grid;
+   grid-template-rows: auto;
+   grid-template-columns: 1fr 1fr;
+   grid-gap: 10px;
+   margin: 20px;
+   border: 1px solid white;
+   grid-template-areas: 
+   "hd hd"
+   "profile profile"
+   "project-title project-title"
+   "project project";
+}
+
+.container .header {
+   grid-area: hd;
+   display: flex;
+}
+
+.container .header .navbar {
+   display: flex;
+   justify-content: space-between;
+}
+
+.container .header .navbar a {
+   text-decoration: none;
+   color: white;
+}
+
+.container .header .navbar .active {
+   color: orangered;
+   font-weight: 600;
+}
+
+.container .profile-card {
+   grid-area: profile;
+   width: 100%; /* Ensure it fits inside */
+   max-width: 100%; /* Prevents overflow */
+   margin: 0; /* Avoid extra margins */
+   padding: 30px; /* Adjust padding as needed */
+   box-sizing: border-box; /* Ensure padding is within the width */
+   display: grid;
+   grid-template-columns: 3fr 1fr;
+   grid-template-areas: 
+   "intro pic"
+   ;
+}
+.container .profile-card .profile{
+    grid-area: intro;
+
+}
+.container .profile p{
+    text-align: justify;
+    width: 60%;
+}
+.container .profile-card .status{
+    grid-area: pic;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.container .profile-card .status #avail{
+    height: 30px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+.container .profile-card .status #pic{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+.container .profile-card .profile #hire{
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor:pointer;
+
+}
+.container .profile-card .profile #copy{
+    background-color: gray;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profile-card .profile #copy:hover{
+    background-color: #ff4c4c;
+}
+
+/* Media query for smaller screens (phone size) */
+@media (max-width: 500px) {
+    .container .profile-card {
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-areas: 
+        "intro"
+        "pic"; /* Stack intro and pic vertically */
+    }
+}
+
+.container .project-title{
+    grid-area: project-title;
+    justify-content: center;
+}
+.project-title h2{
+    text-align: center;
+}
+.container .projects {
+    grid-area: project;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+}
+
+.project-card {
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    width: 28%;  /* Each card takes 28% of the container */
+    margin: 1%;   /* Margin between the cards */
+    padding: 20px;
+    text-align: center;
+}
+
+.project-card img {
+    border-radius: 50%;  /* Circular image */
+    width: 100px;   /* Fixed width for the image */
+    height: 100px;  /* Fixed height for the image */
+}
+
+.project-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.project-card p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.project-card button {
+    background-color: #ff9900;  /* Orange button */
+    color: #ffffff;  /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Media query for smaller screens (phone size) */
+@media (max-width: 768px) {
+    .project-card {
+        width: 90%; /* Each card takes full width of the container */
+        margin: 10px 0; /* Add space between cards vertically */
+    }
+}
